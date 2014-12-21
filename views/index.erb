@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>D3.js x</title>
+
+    <!-- Bootstrap -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/vendor/code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+      div.container {
+        margin-left: 120px;
+        margin-right: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand">D3.js x 国土数値情報地価公示データ</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">データ作成年度 <b class="caret"></b></a>
+              <ul id="menu" class="dropdown-menu">
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="container">
+      <div class="bs-docs-section">
+        <div class="row">
+          <div class="page-header" id="banner">
+            <div class="col-lg-4">
+              <br>
+              <h4><span id="year" class="badge badge-success" style="font-size:x-large;"></span></h4>
+            </div>
+            <div class="col-lg-8">
+              <h5 id="information">
+                <table class="table table-bordered table-condensed" style="font-size:small;">
+                  <thead>
+                    <tr style="color:white;font-weight:bold;background-color:#1B2C73;">
+                      <!-- <th width="15%">市区町村</th> -->
+                      <th width="15%">地価</th>
+                      <th width="35%">最寄駅</th>
+                      <th width="50%">住所</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="color:white;font-weight:bold;background-color:#1B2C73;">
+                      <!--
+                      <td>
+                        <span id="city_code" class="badge badge-important"></span>
+                        <span id="city_name"></span>
+                      </td>
+                      -->
+                      <td>
+                        <span id="price" class="badge badge-important"></span>
+                      </td>
+                      <td>
+                        <span id="station"></span>
+                      </td>
+                      <td>
+                        <span id="address">&nbsp;</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="bs-docs-section">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="well"; style="padding: 8px 0;">
+              <div style="overflow-y: scroll; overflow-x: hidden; height: 600px;">
+                <ul id="sidebar" class="nav nav-list"></ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="bs-component">
+              <div id ="map"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="bs-docs-section">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="bs-component">
+              <div id ="usage">
+                <h5>Usage</h5>
+                <ul>
+                  <li>map zoom in  : mouse wheel up or mouse double click.</li>
+                  <li>map zoom out : mouse wheel down.</li>
+                  <li>map move     : mouse drag and drop.</li>
+                  <li>land information : mouse click land on map or sidebar.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <script src="/vendor/d3js.org/d3.v3.min.js"></script>
+  <script src="/vendor/d3js.org/topojson.v1.min.js"></script>
+  <script src="/js/d3main.js"></script>
+  <script src="/js/tables.js"></script>
+  </body>
+</html>
