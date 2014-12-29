@@ -6,7 +6,8 @@ function d3main(collection) {
   var width = 1150,
       height = 600,
       centered;
-  var scale = 60000;
+  // var scale = 60000;
+  var scale = 75000;
   var scaleextent = 1;
   // var center = [139.7531, 35.6859];
   var center = d3.geo.centroid(collection);
