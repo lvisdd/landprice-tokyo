@@ -1,5 +1,4 @@
-d3.json('/geojson/japan.geojson', function(err, collection) {
-  if (err) return console.error(err);
+d3.json('/geojson/tokyo.geojson', function(err, collection) {
   d3main(collection);
 });
 
@@ -7,11 +6,10 @@ function d3main(collection) {
   var width = 1150,
       height = 600,
       centered;
-  // var scale = 60000;
-  var scale = 75000;
+  var scale = 60000;
   var scaleextent = 1;
-  var center = [139.7531, 35.6859];
-  // var center = d3.geo.centroid(collection);
+  // var center = [139.7531, 35.6859];
+  var center = d3.geo.centroid(collection);
   
   var svg = d3.select("#map").append("svg")
             .attr({
@@ -42,8 +40,7 @@ function d3main(collection) {
   var path = d3.geo.path().projection(projection);
   
   var zoom = d3.behavior.zoom()
-               // .scaleExtent([1, 20])
-               .scaleExtent([0.02, 20])
+               .scaleExtent([1, 20])
                .on("zoom", zoomed);
  
   createMapBase();
@@ -109,7 +106,7 @@ function d3main(collection) {
     $('#address').html('&nbsp;')
 
     var obj = new Array();
-    d3.json('/geojson/' + 'landprice-' + year + '.geojson', function(err, collection) {
+    d3.json('/geojson/' + 'tokyo-landprice-' + year + '.geojson', function(err, collection) {
       if (err) {
           $('#map').text('ファイルを読み込めませんでした。');
           return;
@@ -171,6 +168,7 @@ function d3main(collection) {
   }
 
   function focused(d) {
+    i = 0;
     var m = path.centroid(d);
     g.append("circle")
       .attr("cx", m[0])
@@ -186,11 +184,9 @@ function d3main(collection) {
         .duration(1000)
         .delay(100)
         .ease(Math.sqrt)
-        // .attr("r", 30)
-        .attr("r", 30 / zoom.scale() * 5)
+        .attr("r", 30)
         .style("stroke-opacity", 1e-6)
-        // .style("stroke-width", 1e-6)
-        .style("stroke-width", 5 / zoom.scale())
+        .style("stroke-width", 1e-6)
         .remove();
     // d3.event.preventDefault();
   }
